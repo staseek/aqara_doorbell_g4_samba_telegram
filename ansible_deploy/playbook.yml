@@ -1,0 +1,4 @@
+---
+- hosts: home_media_server
+  roles:
+    - video_monitoring_tg

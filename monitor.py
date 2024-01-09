@@ -21,8 +21,8 @@ def main():
     :return:
     """
     path = os.environ['MONITORING_PATH']
-    telegram_chat_id = os.environ[]
-    telegram_
+    telegram_chat_id = os.environ['TG_CHAT_ID']
+    telegram_token = os.environ['TG_TOKEN']
     event_handler = EndWritingHandler()
     observer = Observer()
     observer.schedule(event_handler, path, recursive=True)
