@@ -1,3 +1,3 @@
 venv
 .idea
-vault_password
+ansible_deploy/vault_password

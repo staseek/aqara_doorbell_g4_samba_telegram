@@ -1,1 +1,1 @@
-ansible-playbook -v --vault-password-file vault_password -i ansible_deploy/inventories/inventory.yml playbook.yml
+cd ansible_deploy && ansible-playbook -v --vault-password-file vault_password -i inventories/inventory.yml playbook.yml && cd ..

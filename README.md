@@ -3,7 +3,7 @@ Home Automation script. Monitoring samba share which stores videos from Aqara Do
 
 This repository has an Ansible playbook to configure and deploy it to your home media server
 
-1. Generate your own password ```openssl rand -base64 32 > vault_password_file```
+1. Generate your own password ```openssl rand -base64 32 > ansible_deploy/vault_password```
 2. Create your own ```inventory.yml```
    - Generate encrypted values for it with command ```ansible-vault -v encrypt_string --vault-password vault_password 'your_password_here' --name 'ansible_become_pass'```
    - Fill ```ansible_user```
