@@ -1,0 +1,9 @@
+- name: Gather the package facts
+  package_facts:
+    manager: auto
+
+- name: Creates directory
+  ansible.builtin.file:
+    path: "{{ tools_path }}"
+    state: directory
+

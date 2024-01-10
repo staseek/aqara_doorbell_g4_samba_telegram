@@ -1,3 +1,4 @@
 venv
 .idea
 ansible_deploy/vault_password
+.env

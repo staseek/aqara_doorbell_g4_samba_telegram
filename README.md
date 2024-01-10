@@ -10,5 +10,12 @@ This repository has an Ansible playbook to configure and deploy it to your home 
    - Fill ```ansible_host```
    - Fill ```ansible_become_pass```
     And others if you need
+2. Generate your own ssh-key ```ssh-keygen``` and add it to ```ansible_host``` with command ```ssh-copy-id -f ~/.ssh/id_rsa user@host```
 3. Make deploy script executable ```chmod +x ./deploy.sh```
-4. Just run ```./deploy.sh```
+4. Copy env file and change values there as you need ```cp .env.example .env`
+```
+TG_BOT_TOKEN=123:eijfijerfijf
+TG_CHAT_ID=123
+MONITORING_FOLDER_VIDEO=/videos/aqara
+```
+6. Just run ```./deploy.sh```
