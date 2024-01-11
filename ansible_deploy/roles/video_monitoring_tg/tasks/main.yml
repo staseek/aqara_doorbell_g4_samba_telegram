@@ -7,3 +7,25 @@
     path: "{{ tools_path }}"
     state: directory
 
+- name: Copy main script
+  ansible.builtin.copy:
+    src: ../monitor.py
+    dest: "{{ tools_path }}/monitor.py"
+    force: true
+
+- name: Copy main env
+  ansible.builtin.copy:
+    src: ../.env
+    dest: "{{ tools_path }}/.env"
+    force: true
+
+- name: Copy main requirements
+  ansible.builtin.copy:
+    src: ../requirements.txt
+    dest: "{{ tools_path }}/requirements.txt"
+    force: true
+
+- pip:
+     requirements: "{{ tools_path }}/requirements.txt"
+     virtualenv: "{{ tools_path }}/venv"
+     virtualenv_command: /usr/bin/python3 -m venv
