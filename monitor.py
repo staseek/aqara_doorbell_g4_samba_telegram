@@ -7,6 +7,8 @@ from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler, FileClosedEvent
 from dotenv import load_dotenv
 from aiogram import Bot
+from aiogram.types import FSInputFile
+import asyncio
 
 
 class EndWritingHandler(LoggingEventHandler):
@@ -19,9 +21,21 @@ class EndWritingHandler(LoggingEventHandler):
         self.tg_chat_id = tg_chat_id
         self.bot = Bot(self.tg_bot_token)
 
+    async def bbb(self, event):
+        try:
+            await self.bot.send_video(chat_id=self.tg_chat_id,
+                                video=FSInputFile(event.src_path))
+        except Exception as e:
+            print(e)
+
     def on_closed(self, event: FileClosedEvent):
+        print(event.is_directory, event.src_path)
         if not event.is_directory:
-            self.bot.send_video(self.tg_chat_id, event.src_path)
+            # print(event.src_path)
+            asyncio.set_event_loop(asyncio.new_event_loop())
+            asyncio.get_event_loop().run_until_complete(self.bot.send_message(self.tg_chat_id, event.src_path))
+            asyncio.set_event_loop(asyncio.new_event_loop())
+            asyncio.get_event_loop().run_until_complete(self.bbb(event))
 
 
 def main():
