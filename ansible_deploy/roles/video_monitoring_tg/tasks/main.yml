@@ -29,3 +29,22 @@
      requirements: "{{ tools_path }}/requirements.txt"
      virtualenv: "{{ tools_path }}/venv"
      virtualenv_command: /usr/bin/python3 -m venv
+
+- name: Template a systemd to /etc/systemd/system
+  ansible.builtin.template:
+    src: templates/systemd_monitoring_service.j2
+    dest: "{{ tools_path }}/{{ systemd_service_name }}.service"
+
+
+- name: Move file
+  command: "mv {{ tools_path }}/{{ systemd_service_name }}.service /etc/systemd/system/{{ systemd_service_name }}.service"
+  become_user: root
+  become: true
+
+- name: Restart service monitoring
+  ansible.builtin.systemd_service:
+    state: restarted
+    daemon_reload: true
+    name: "{{ systemd_service_name }}"
+  become: true
+  become_user: root

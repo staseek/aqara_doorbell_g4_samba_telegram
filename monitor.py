@@ -32,7 +32,7 @@ class EndWritingHandler(LoggingEventHandler):
             print(e)
 
     def on_closed(self, event: FileClosedEvent):
-        print(event.is_directory, event.src_path)
+        # print(event.is_directory, event.src_path)
         if not event.is_directory:
             self.loop.run_until_complete(self.bbb(event))
 

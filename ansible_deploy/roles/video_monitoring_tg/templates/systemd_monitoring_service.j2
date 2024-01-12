@@ -1,0 +1,13 @@
+[Unit]
+Description={{ service_description }}
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart={{ tools_path }}/venv/bin/python3 {{ tools_path }}/monitor.py
+WorkingDirectory= {{ tools_path }}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
