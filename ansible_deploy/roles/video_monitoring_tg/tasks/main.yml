@@ -46,5 +46,6 @@
     state: restarted
     daemon_reload: true
     name: "{{ systemd_service_name }}"
+  enabled: true
   become: true
   become_user: root
