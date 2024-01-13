@@ -1,8 +1,6 @@
-# aqara_doorbell_g4_samba_telegram
+# Aqara Doorbell G4 samba Telegram
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/drkostas/Youtube-FirstCommentBot/master/LICENSE)
-
 ## Table of Contents
-
 + [About](#about)
 + [Getting Started](#getting_started)
 + [License](#license)
@@ -12,9 +10,16 @@ Home Automation script. It monitors samba-share, which stores videos from Aqara 
 This repository has an Ansible playbook to configure and deploy it to your home media server.
 Especially this solution is good if you don't want to give Agara Doorbell direct access to the internet.
 
-
 ## Getting started <a name = "prerequisites"></a>
 ### Configure aqara doorbell
+1. [Configure samba-server on your Home server](https://ubuntu.com/server/docs/samba-file-server?ref=homelab.casaursus.net)
+1. Open Aqara app
+2. Choose your Doorbell
+3. Device Settings
+4. Dorbell Settings
+5. SD Card Storage
+6. NAS (Network Attached Storage)
+7. Configure connection to your NAS
 ### Configure script and deploy it to home server 
 1. Generate your own password ```openssl rand -base64 32 > ansible_deploy/vault_password```
 2. Create your own ```inventory.yml```
