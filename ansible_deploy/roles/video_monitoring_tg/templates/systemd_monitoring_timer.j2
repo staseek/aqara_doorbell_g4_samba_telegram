@@ -1,0 +1,9 @@
+[Unit]
+Description=Restart monitoring video service
+
+[Timer]
+Unit={{ systemd_service_name }}.service
+OnCalendar=*-*-* 2:00:00
+
+[Install]
+WantedBy=timers.target
