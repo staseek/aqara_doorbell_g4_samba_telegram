@@ -35,18 +35,8 @@
     src: templates/systemd_monitoring_service.j2
     dest: "{{ tools_path }}/{{ systemd_service_name }}.service"
 
-- name: Template a systemd timer to /etc/systemd/system
-  ansible.builtin.template:
-    src: templates/systemd_monitoring_timer.j2
-    dest: "{{ tools_path }}/{{ systemd_service_name }}.timer"
-
 - name: Move file
   command: "mv {{ tools_path }}/{{ systemd_service_name }}.service /etc/systemd/system/{{ systemd_service_name }}.service"
-  become_user: root
-  become: true
-
-- name: Move file
-  command: "mv {{ tools_path }}/{{ systemd_service_name }}.timer /etc/systemd/system/{{ systemd_service_name }}.timer"
   become_user: root
   become: true
 
@@ -55,15 +45,6 @@
     state: restarted
     daemon_reload: true
     name: "{{ systemd_service_name }}.service"
-    enabled: true
-  become: true
-  become_user: root
-
-- name: Restart timer monitoring
-  ansible.builtin.systemd_service:
-    state: restarted
-    daemon_reload: true
-    name: "{{ systemd_service_name }}.timer"
     enabled: true
   become: true
   become_user: root

@@ -7,7 +7,8 @@ Type=simple
 User=root
 ExecStart={{ tools_path }}/venv/bin/python3 {{ tools_path }}/monitor.py
 WorkingDirectory= {{ tools_path }}
-Restart=on-failure
+RuntimeMaxSec=86400s
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
