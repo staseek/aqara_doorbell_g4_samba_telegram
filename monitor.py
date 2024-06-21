@@ -24,10 +24,9 @@ class EndWritingHandler(LoggingEventHandler):
 
     async def bbb(self, event):
         try:
-            await self.bot.send_message(chat_id=self.tg_chat_id,
-                                        text="Появилось новая запись движения присылаю.")
             await self.bot.send_video(chat_id=self.tg_chat_id,
-                                video=FSInputFile(event.src_path))
+                                      caption="Появилась новая запись движения.",
+                                      video=FSInputFile(event.src_path))
         except Exception as e:
             print(e)
 
