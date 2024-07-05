@@ -1,4 +1,4 @@
-# Aqara Doorbell G4 samba Tcelegram
+# Aqara Doorbell G4 samba share to Telegram
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/drkostas/Youtube-FirstCommentBot/master/LICENSE)
 ## Table of Contents
 + [About](#about)
